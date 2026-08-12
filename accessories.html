@@ -1,360 +1,1108 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>DKV Fix - Mobile Accessories</title>
+<title>DKV Fix - Mobile Accessories</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #f4f7fb;
-      color: #222;
-    }
+body {
+    background: #f4f7fb;
+    color: #172033;
+}
 
-    header {
-      background: linear-gradient(135deg, #111827, #db2777, #7c3aed);
-      color: white;
-      text-align: center;
-      padding: 35px 15px;
-    }
+/* HEADER */
+header {
+    background: linear-gradient(135deg, #111827, #1d4ed8, #7c3aed);
+    color: white;
+    text-align: center;
+    padding: 38px 15px;
+}
 
-    header h1 {
-      font-size: 34px;
-      margin-bottom: 8px;
+.logo {
+    font-size: 42px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    background: linear-gradient(
+        90deg,
+        #00e5ff,
+        #ffffff,
+        #00ff88,
+        #ffd700
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+header p {
+    margin-top: 8px;
+    font-size: 18px;
+}
+
+.badge {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 8px 18px;
+    border: 1px solid #5eead4;
+    border-radius: 30px;
+    color: #ccfbf1;
+}
+
+/* NAVIGATION */
+nav {
+    background: #020617;
+    padding: 15px 10px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: #22d3ee;
+}
+
+/* HERO */
+.hero {
+    text-align: center;
+    background: white;
+    padding: 55px 20px;
+}
+
+.hero h1 {
+    color: #172554;
+    font-size: 38px;
+    margin-bottom: 12px;
+}
+
+.hero p {
+    max-width: 700px;
+    margin: auto;
+    color: #64748b;
+    line-height: 1.7;
+    font-size: 17px;
+}
+
+/* SEARCH */
+.search-area {
+    max-width: 900px;
+    margin: 25px auto;
+    padding: 0 20px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.search-box {
+    flex: 1;
+    min-width: 250px;
+    padding: 14px 18px;
+    border: 1px solid #cbd5e1;
+    border-radius: 30px;
+    font-size: 16px;
+    outline: none;
+}
+
+.search-box:focus {
+    border-color: #2563eb;
+}
+
+/* CATEGORY BUTTONS */
+.categories {
+    text-align: center;
+    padding: 10px 20px 30px;
+}
+
+.category-btn {
+    border: none;
+    padding: 10px 18px;
+    margin: 5px;
+    border-radius: 25px;
+    background: #e2e8f0;
+    color: #172033;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.category-btn:hover,
+.category-btn.active {
+    background: #2563eb;
+    color: white;
+}
+
+/* PRODUCTS */
+.products {
+    max-width: 1150px;
+    margin: auto;
+    padding: 20px;
+}
+
+.products-title {
+    text-align: center;
+    font-size: 32px;
+    color: #172554;
+    margin-bottom: 30px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(230px, 1fr)
+    );
+    gap: 25px;
+}
+
+/* PRODUCT CARD */
+.product {
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    text-align: center;
+    padding-bottom: 20px;
+    transition: 0.3s;
+}
+
+.product:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.14);
+}
+
+.product-image {
+    width: 100%;
+    height: 220px;
+    object-fit: contain;
+    padding: 15px;
+    background: #f8fafc;
+}
+
+.product h3 {
+    color: #2563eb;
+    font-size: 21px;
+    margin: 15px 10px 8px;
+}
+
+.product p {
+    color: #64748b;
+    min-height: 45px;
+    padding: 0 12px;
+    line-height: 1.5;
+}
+
+.category-label {
+    display: inline-block;
+    margin-top: 10px;
+    background: #eef2ff;
+    color: #4338ca;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.price {
+    font-size: 23px;
+    font-weight: bold;
+    color: #16a34a;
+    margin: 13px 0;
+}
+
+/* BUTTONS */
+.order-button {
+    display: inline-block;
+    background: #25D366;
+    color: white;
+    text-decoration: none;
+    padding: 11px 18px;
+    border-radius: 25px;
+    font-weight: bold;
+    margin: 4px;
+}
+
+.order-button:hover {
+    background: #128C7E;
+}
+
+.cart-button {
+    display: inline-block;
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 11px 18px;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 4px;
+}
+
+.cart-button:hover {
+    background: #1d4ed8;
+}
+
+/* CART */
+.cart-section {
+    max-width: 900px;
+    margin: 45px auto;
+    padding: 25px;
+    background: white;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+.cart-section h2 {
+    text-align: center;
+    color: #172554;
+    margin-bottom: 20px;
+}
+
+#cartItems {
+    margin-bottom: 20px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 12px 0;
+}
+
+.remove-btn {
+    background: #ef4444;
+    color: white;
+    border: none;
+    padding: 7px 12px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.cart-total {
+    text-align: right;
+    font-size: 22px;
+    font-weight: bold;
+    color: #16a34a;
+    margin-bottom: 15px;
+}
+
+.checkout-button {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: #25D366;
+    color: white;
+    text-decoration: none;
+    padding: 15px;
+    border-radius: 30px;
+    font-weight: bold;
+}
+
+/* CONTACT */
+.contact {
+    background: #0f172a;
+    color: white;
+    text-align: center;
+    padding: 55px 20px;
+    margin-top: 30px;
+}
+
+.contact h2 {
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+
+.contact p {
+    color: #cbd5e1;
+    margin-bottom: 22px;
+}
+
+.whatsapp {
+    display: inline-block;
+    background: #25D366;
+    color: white;
+    text-decoration: none;
+    padding: 14px 28px;
+    border-radius: 30px;
+    font-weight: bold;
+}
+
+/* FOOTER */
+footer {
+    background: #020617;
+    color: #94a3b8;
+    text-align: center;
+    padding: 22px;
+    font-size: 14px;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+
+    .logo {
+        font-size: 31px;
     }
 
     header p {
-      font-size: 16px;
+        font-size: 15px;
     }
 
     nav {
-      background: #111827;
-      text-align: center;
-      padding: 14px;
+        line-height: 2.2;
     }
 
     nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 10px;
-      font-weight: bold;
+        margin: 0 5px;
+        font-size: 12px;
     }
 
-    .hero {
-      background: white;
-      text-align: center;
-      padding: 45px 20px;
-    }
-
-    .hero h2 {
-      color: #7c3aed;
-      font-size: 30px;
-      margin-bottom: 12px;
+    .hero h1 {
+        font-size: 29px;
     }
 
     .hero p {
-      color: #666;
-      line-height: 1.6;
-    }
-
-    .products {
-      max-width: 1100px;
-      margin: auto;
-      padding: 40px 20px;
-    }
-
-    .products h2 {
-      text-align: center;
-      color: #111827;
-      margin-bottom: 30px;
-    }
-
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 22px;
-    }
-
-    .product {
-      background: white;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-      text-align: center;
-      padding-bottom: 20px;
+        font-size: 15px;
     }
 
     .product-image {
-      width: 100%;
-      height: 210px;
-      object-fit: contain;
-      background: #f8fafc;
-      padding: 15px;
+        height: 240px;
     }
 
-    .product h3 {
-      color: #2563eb;
-      margin: 15px 10px 8px;
+    .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
     }
-
-    .product p {
-      color: #666;
-      margin-bottom: 10px;
-    }
-
-    .price {
-      font-size: 22px;
-      font-weight: bold;
-      color: #16a34a;
-      margin-bottom: 15px;
-    }
-
-    .order-button {
-      display: inline-block;
-      background: #25D366;
-      color: white;
-      text-decoration: none;
-      padding: 11px 22px;
-      border-radius: 25px;
-      font-weight: bold;
-    }
-
-    .contact {
-      background: #111827;
-      color: white;
-      text-align: center;
-      padding: 40px 20px;
-      margin-top: 20px;
-    }
-
-    .whatsapp {
-      display: inline-block;
-      margin-top: 18px;
-      background: #25D366;
-      color: white;
-      text-decoration: none;
-      padding: 14px 28px;
-      border-radius: 30px;
-      font-weight: bold;
-    }
-
-    footer {
-      background: #0b1120;
-      color: #aaa;
-      text-align: center;
-      padding: 18px;
-      font-size: 14px;
-    }
-
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 28px;
-      }
-
-      nav a {
-        margin: 0 5px;
-        font-size: 13px;
-      }
-
-      .product-image {
-        height: 230px;
-      }
-    }
-  </style>
+}
+</style>
 </head>
 
 <body>
 
-  <header>
-    <h1>DKV FIX</h1>
-    <p>Mobile Accessories & Products</p>
-  </header>
+<!-- HEADER -->
+<header>
 
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="mobile-service.html">Mobile Service</a>
-    <a href="laptop-service.html">Laptop Service</a>
-    <a href="accessories.html">Accessories</a>
-  </nav>
-
-  <section class="hero">
-
-    <h2>🛍️ Mobile Accessories</h2>
-
-    <p>
-      Quality mobile accessories at affordable prices.
-      Choose your product and contact us on WhatsApp to order.
-    </p>
-
-  </section>
-
-  <section class="products">
-
-    <h2>Our Products</h2>
-
-    <div class="product-grid">
-
-      <!-- PRODUCT 1 -->
-      <div class="product">
-
-        <img
-          class="product-image"
-          src="https://via.placeholder.com/400x300?text=Product+Photo"
-          alt="Mobile Cover">
-
-        <h3>Premium Mobile Cover</h3>
-
-        <p>High quality protective mobile cover.</p>
-
-        <div class="price">₹299</div>
-
-        <a
-          class="order-button"
-          href="https://wa.me/917540032340?text=I%20want%20to%20order%20Premium%20Mobile%20Cover%20for%20Rs%20299"
-          target="_blank">
-          🟢 Order on WhatsApp
-        </a>
-
-      </div>
-
-
-      <!-- PRODUCT 2 -->
-      <div class="product">
-
-        <img
-          class="product-image"
-          src="https://via.placeholder.com/400x300?text=Product+Photo"
-          alt="Charger">
-
-        <h3>Fast Charger</h3>
-
-        <p>Fast charging adapter for smartphones.</p>
-
-        <div class="price">₹499</div>
-
-        <a
-          class="order-button"
-          href="https://wa.me/917540032340?text=
-          🟢 Order on WhatsApp
-        </a>
-
-      </div>
-
-
-      <!-- PRODUCT 3 -->
-      <div class="product">
-
-        <img
-          class="product-image"
-          src="https://via.placeholder.com/400x300?text=Product+Photo"
-          alt="Earphones">
-
-        <h3>Type-C Earphones</h3>
-
-        <p>Clear sound Type-C wired earphones.</p>
-
-        <div class="price">₹399</div>
-
-        <a
-          class="order-button"
-          href="https://wa.me/917540032340?text=Hello%20DKV%20Fix,%20I%20want%20to%20order%20the%20Type-C%20Earphones%20for%20Rs.399."
-          target="_blank">
-          🟢 Order on WhatsApp
-        </a>
-
-      </div>
-
-
-      <!-- PRODUCT 4 -->
-      <div class="product">
-
-        <img
-          class="product-image"
-          src="https://via.placeholder.com/400x300?text=Product+Photo"
-          alt="USB Cable">
-
-        <h3>Fast Charging Cable</h3>
-
-        <p>Durable charging and data cable.</p>
-
-        <div class="price">₹199</div>
-
-        <a
-          class="order-button"
-          href="https://wa.me/917540032340?text=Hello%20DKV%20Fix,%20I%20want%20to%20order%20the%20Fast%20Charging%20Cable%20for%20Rs.199."
-          target="_blank">
-          🟢 Order on WhatsApp
-        </a>
-
-      </div>
-
+    <div class="logo">
+        DKV FIX MOBILES
     </div>
 
-  </section>
-
-  <section class="contact">
-
-    <h2>Need an Accessory?</h2>
-
     <p>
-      Contact DKV Fix on WhatsApp for product availability.
+        Mobile Accessories & Products
     </p>
 
-    <a
-      class="whatsapp"
-      href="https://wa.me/917540032340?text=Hello%20DKV%20Fix,%20I%20want%20to%20know%20about%20your%20mobile%20accessories."
-      target="_blank">
-      💬 WhatsApp DKV Fix
+    <div class="badge">
+        Quality • Affordable • Trusted
+    </div>
+
+</header>
+
+
+<!-- NAVIGATION -->
+<nav>
+
+    <a href="index.html">Home</a>
+
+    <a href="mobile-service.html">
+        Mobile Service
     </a>
 
-  </section>
+    <a href="laptop-service.html">
+        Laptop Service
+    </a>
 
-  <footer>
-    © 2026 DKV Fix Mobiles & Laptop Service Center. All Rights Reserved.
-  </footer>
+    <a href="accessories.html">
+        Accessories
+    </a>
 
-</body><script>
-const products = JSON.parse(localStorage.getItem("dkvProducts")) || [];
+    <a href="index.html#location">
+        Location
+    </a>
 
-const productGrid = document.querySelector(".product-grid");
+    <a href="index.html#contact">
+        Contact
+    </a>
 
-if (productGrid && products.length > 0) {
-    products.forEach(product => {
-        const card = document.createElement("div");
-        card.className = "product";
+</nav>
 
-        card.innerHTML = `
+
+<!-- HERO -->
+<section class="hero">
+
+    <h1>
+        🛍️ Mobile Accessories
+    </h1>
+
+    <p>
+        Explore mobile covers, chargers, earphones,
+        cables and other useful accessories from DKV Fix.
+        Select your product and order directly through WhatsApp.
+    </p>
+
+</section>
+
+
+<!-- SEARCH -->
+<div class="search-area">
+
+    <input
+        type="text"
+        id="searchInput"
+        class="search-box"
+        placeholder="🔍 Search accessories..."
+        onkeyup="searchProducts()"
+    >
+
+</div>
+
+
+<!-- CATEGORIES -->
+<div class="categories">
+
+    <button
+        class="category-btn active"
+        onclick="filterCategory('All', this)"
+    >
+        All
+    </button>
+
+    <button
+        class="category-btn"
+        onclick="filterCategory('Mobile Covers', this)"
+    >
+        📱 Covers
+    </button>
+
+    <button
+        class="category-btn"
+        onclick="filterCategory('Chargers', this)"
+    >
+        🔌 Chargers
+    </button>
+
+    <button
+        class="category-btn"
+        onclick="filterCategory('Earphones', this)"
+    >
+        🎧 Earphones
+    </button>
+
+    <button
+        class="category-btn"
+        onclick="filterCategory('Cables', this)"
+    >
+        🔗 Cables
+    </button>
+
+</div>
+
+
+<!-- PRODUCTS -->
+<section class="products">
+
+    <h2 class="products-title">
+        Our Products
+    </h2>
+
+    <div
+        class="product-grid"
+        id="productGrid"
+    >
+
+        <!-- PRODUCT 1 -->
+        <div
+            class="product"
+            data-category="Mobile Covers"
+            data-name="Premium Mobile Cover"
+        >
+
             <img
                 class="product-image"
-                src="${product.image}"
-                alt="${product.name}"
+                src="https://via.placeholder.com/400x300?text=Mobile+Cover"
+                alt="Premium Mobile Cover"
             >
 
-            <h3>${product.name}</h3>
+            <span class="category-label">
+                Mobile Covers
+            </span>
 
-            <p>${product.description}</p>
+            <h3>
+                Premium Mobile Cover
+            </h3>
 
-            <div class="price">₹${product.price}</div>
+            <p>
+                High quality protective mobile cover.
+            </p>
+
+            <div class="price">
+                ₹299
+            </div>
+
+            <button
+                class="cart-button"
+                onclick="addToCart('Premium Mobile Cover', 299)"
+            >
+                🛒 Add to Cart
+            </button>
 
             <a
                 class="order-button"
-                href="https://wa.me/917540032340?text=Hi%20DKV%20Fix,%20I%20want%20to%20order%20${encodeURIComponent(product.name)}"
+                href="https://wa.me/917540032340?text=Hello%20DKV%20Fix,%20I%20want%20to%20order%20Premium%20Mobile%20Cover%20for%20Rs.299."
                 target="_blank"
             >
-                Order on WhatsApp
+                🟢 Order
             </a>
+
+        </div>
+
+
+        <!-- PRODUCT 2 -->
+        <div
+            class="product"
+            data-category="Chargers"
+            data-name="Fast Charger"
+        >
+
+            <img
+                class="product-image"
+                src="https://via.placeholder.com/400x300?text=Fast+Charger"
+                alt="Fast Charger"
+            >
+
+            <span class="category-label">
+                Chargers
+            </span>
+
+            <h3>
+                Fast Charger
+            </h3>
+
+            <p>
+                Fast charging adapter for smartphones.
+            </p>
+
+            <div class="price">
+                ₹499
+            </div>
+
+            <button
+                class="cart-button"
+                onclick="addToCart('Fast Charger', 499)"
+            >
+                🛒 Add to Cart
+            </button>
+
+            <a
+                class="order-button"
+                href="https://wa.me/917540032340?text=Hello%20DKV%20Fix,%20I%20want%20to%20order%20Fast%20Charger%20for%20Rs.499."
+                target="_blank"
+            >
+                🟢 Order
+            </a>
+
+        </div>
+
+
+        <!-- PRODUCT 3 -->
+        <div
+            class="product"
+            data-category="Earphones"
+            data-name="Type-C Earphones"
+        >
+
+            <img
+                class="product-image"
+                src="https://via.placeholder.com/400x300?text=Type-C+Earphones"
+                alt="Type-C Earphones"
+            >
+
+            <span class="category-label">
+                Earphones
+            </span>
+
+            <h3>
+                Type-C Earphones
+            </h3>
+
+            <p>
+                Clear sound Type-C wired earphones.
+            </p>
+
+            <div class="price">
+                ₹399
+            </div>
+
+            <button
+                class="cart-button"
+                onclick="addToCart('Type-C Earphones', 399)"
+            >
+                🛒 Add to Cart
+            </button>
+
+            <a
+                class="order-button"
+                href="https://wa.me/917540032340?text=Hello%20DKV%20Fix,%20I%20want%20to%20order%20Type-C%20Earphones%20for%20Rs.399."
+                target="_blank"
+            >
+                🟢 Order
+            </a>
+
+        </div>
+
+
+        <!-- PRODUCT 4 -->
+        <div
+            class="product"
+            data-category="Cables"
+            data-name="Fast Charging Cable"
+        >
+
+            <img
+                class="product-image"
+                src="https://via.placeholder.com/400x300?text=Charging+Cable"
+                alt="Fast Charging Cable"
+            >
+
+            <span class="category-label">
+                Cables
+            </span>
+
+            <h3>
+                Fast Charging Cable
+            </h3>
+
+            <p>
+                Durable charging and data cable.
+            </p>
+
+            <div class="price">
+                ₹199
+            </div>
+
+            <button
+                class="cart-button"
+                onclick="addToCart('Fast Charging Cable', 199)"
+            >
+                🛒 Add to Cart
+            </button>
+
+            <a
+                class="order-button"
+                href="https://wa.me/917540032340?text=Hello%20DKV%20Fix,%20I%20want%20to%20order%20Fast%20Charging%20Cable%20for%20Rs.199."
+                target="_blank"
+            >
+                🟢 Order
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CART -->
+<section class="cart-section">
+
+    <h2>
+        🛒 Your Cart
+    </h2>
+
+    <div id="cartItems">
+        <p style="text-align:center;color:#64748b;">
+            Your cart is empty.
+        </p>
+    </div>
+
+    <div
+        class="cart-total"
+        id="cartTotal"
+    >
+        Total: ₹0
+    </div>
+
+    <a
+        id="checkoutButton"
+        class="checkout-button"
+        href="#"
+        onclick="checkoutWhatsApp(event)"
+    >
+        🟢 Order Cart on WhatsApp
+    </a>
+
+</section>
+
+
+<!-- CONTACT -->
+<section class="contact">
+
+    <h2>
+        Need an Accessory?
+    </h2>
+
+    <p>
+        Contact DKV Fix for product availability,
+        price and model compatibility.
+    </p>
+
+    <a
+        class="whatsapp"
+        href="https://wa.me/917540032340?text=Hello%20DKV%20Fix,%20I%20want%20to%20know%20about%20your%20mobile%20accessories."
+        target="_blank"
+    >
+        💬 WhatsApp DKV Fix
+    </a>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+
+    © 2026 DKV Fix Mobiles & Laptop Service Center.
+    All Rights Reserved.
+
+</footer>
+
+
+<script>
+
+/* =========================
+   CART
+========================= */
+
+let cart = [];
+
+
+function addToCart(name, price) {
+
+    cart.push({
+        name: name,
+        price: price
+    });
+
+    updateCart();
+
+    alert(name + " added to cart!");
+}
+
+
+function removeFromCart(index) {
+
+    cart.splice(index, 1);
+
+    updateCart();
+}
+
+
+function updateCart() {
+
+    const cartItems =
+        document.getElementById("cartItems");
+
+    const cartTotal =
+        document.getElementById("cartTotal");
+
+    if (cart.length === 0) {
+
+        cartItems.innerHTML = `
+            <p style="text-align:center;color:#64748b;">
+                Your cart is empty.
+            </p>
         `;
 
-        productGrid.appendChild(card);
+        cartTotal.innerText =
+            "Total: ₹0";
+
+        return;
+    }
+
+
+    let total = 0;
+
+    cartItems.innerHTML = "";
+
+
+    cart.forEach((item, index) => {
+
+        total += Number(item.price);
+
+        const div =
+            document.createElement("div");
+
+        div.className =
+            "cart-item";
+
+        div.innerHTML = `
+            <strong>
+                ${item.name}
+            </strong>
+
+            <span>
+                ₹${item.price}
+            </span>
+
+            <button
+                class="remove-btn"
+                onclick="removeFromCart(${index})"
+            >
+                Remove
+            </button>
+        `;
+
+        cartItems.appendChild(div);
+
     });
+
+
+    cartTotal.innerText =
+        "Total: ₹" + total;
+
 }
+
+
+/* =========================
+   WHATSAPP CHECKOUT
+========================= */
+
+function checkoutWhatsApp(event) {
+
+    event.preventDefault();
+
+    if (cart.length === 0) {
+
+        alert(
+            "Please add a product to your cart first."
+        );
+
+        return;
+    }
+
+
+    let message =
+        "Hello DKV Fix! I want to order:%0A%0A";
+
+    let total = 0;
+
+
+    cart.forEach((item, index) => {
+
+        message +=
+            (index + 1) +
+            ". " +
+            item.name +
+            " - Rs." +
+            item.price +
+            "%0A";
+
+        total += Number(item.price);
+
+    });
+
+
+    message +=
+        "%0ATotal: Rs." +
+        total +
+        "%0A%0APlease confirm availability and order details.";
+
+
+    const whatsappURL =
+        "https://wa.me/917540032340?text=" +
+        message;
+
+
+    window.open(
+        whatsappURL,
+        "_blank"
+    );
+
+}
+
+
+/* =========================
+   CATEGORY FILTER
+========================= */
+
+let selectedCategory = "All";
+
+
+function filterCategory(category, button) {
+
+    selectedCategory = category;
+
+
+    document
+        .querySelectorAll(".category-btn")
+        .forEach(btn => {
+            btn.classList.remove("active");
+        });
+
+
+    button.classList.add("active");
+
+
+    searchProducts();
+
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+function searchProducts() {
+
+    const search =
+        document
+        .getElementById("searchInput")
+        .value
+        .toLowerCase();
+
+
+    const products =
+        document
+        .querySelectorAll(".product");
+
+
+    products.forEach(product => {
+
+        const name =
+            product
+            .getAttribute("data-name")
+            .toLowerCase();
+
+
+        const category =
+            product
+            .getAttribute("data-category");
+
+
+        const matchesSearch =
+            name.includes(search);
+
+
+        const matchesCategory =
+            selectedCategory === "All" ||
+            category === selectedCategory;
+
+
+        if (
+            matchesSearch &&
+            matchesCategory
+        ) {
+
+            product.style.display = "";
+
+        } else {
+
+            product.style.display = "none";
+
+        }
+
+    });
+
+}
+
+
+/* =========================
+   LOAD PRODUCTS FROM ADMIN
+========================= */
+
+const savedProducts =
+    JSON.parse(
+        localStorage.getItem("dkvProducts")
+    ) || [];
+
+
+const productGrid =
+    document.getElementById("productGrid");
+
+
+savedProducts.forEach(product => {
+
+    const card =
+        document.createElement("div");
+
+    card.className =
+        "product";
+
+    card.setAttribute(
+        "data-category",
+        product.category || "Other"
+    );
+
+    card.setAttribute(
+        "data-name",
+        product.name
+    );
+
+
+    card.innerHTML = `
+
+        <img
+            class="product-image"
+            src="${product.image || 'https://via.placeholder.com/400x300?text=DKV+Fix+Product'}"
+            alt="${product.name}"
+        >
+
+        <span class="category-label">
+            ${product.category || "Accessories"}
+        </span>
+
+        <h3>
+            ${product.name}
+        </h3>
+
+        <p>
+            ${product.description || "Quality DKV Fix accessory."}
+        </p>
+
+        <div class="price">
+            ₹${product.price}
+        </div>
+
+        <button
+            class="cart-button"
+            onclick="addToCart('${String(product.name).replace(/'/g, "\\'")}', ${Number(product.price) || 0})"
+        >
+            🛒 Add to Cart
+        </button>
+
+        <a
+            class="order-button"
+            href="https://wa.me/917540032340?text=${encodeURIComponent(
+                "Hello DKV Fix! I want to order " +
+                product.name +
+                " for Rs." +
+                product.price
+            )}"
+            target="_blank"
+        >
+            🟢 Order
+        </a>
+    `;
+
+
+    productGrid.appendChild(card);
+
+});
+
 </script>
+
+</body>
 </html>

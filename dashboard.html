@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DKV Fix - Admin Dashboard</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f1f5f9;
+            color: #172033;
+        }
+
+        header {
+            background: linear-gradient(135deg, #111827, #2563eb, #7c3aed);
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 30px;
+        }
+
+        header p {
+            margin-top: 7px;
+            color: #dbeafe;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .box {
+            background: white;
+            padding: 25px;
+            border-radius: 18px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            margin-bottom: 25px;
+        }
+
+        .box h2 {
+            color: #1d4ed8;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 7px;
+            font-weight: bold;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 13px 25px;
+            border: none;
+            border-radius: 10px;
+            background: #2563eb;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        .preview {
+            margin-top: 25px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .product {
+            background: #f8fafc;
+            border-radius: 15px;
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+        }
+
+        .product img {
+            width: 100%;
+            height: 180px;
+            object-fit: contain;
+            background: white;
+            border-radius: 10px;
+        }
+
+        .product h3 {
+            margin: 12px 0 7px;
+            color: #1d4ed8;
+        }
+
+        .price {
+            color: #16a34a;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .delete {
+            background: #dc2626;
+            margin-top: 12px;
+            padding: 9px 18px;
+        }
+
+        .note {
+            margin-top: 15px;
+            padding: 12px;
+            background: #fff7ed;
+            border-left: 4px solid #f97316;
+            color: #9a3412;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>DKV FIX</h1>
+    <p>Owner Dashboard</p>
+</header>
+
+<div class="container">
+
+    <div class="box">
+
+        <h2>➕ Add New Product</h2>
+
+        <label>Product Photo</label>
+
+        <input
+            type="file"
+            id="productImage"
+            accept="image/*"
+        >
+
+        <label>Product Name</label>
+
+        <input
+            type="text"
+            id="productName"
+            placeholder="Example: Premium Mobile Cover"
+        >
+
+        <label>Price</label>
+
+        <input
+            type="number"
+            id="productPrice"
+            placeholder="Example: 299"
+        >
+
+        <label>Description</label>
+
+        <textarea
+            id="productDescription"
+            placeholder="Enter product details">
+        </textarea>
+
+        <button onclick="addProduct()">
+            ➕ Add Product
+        </button>
+
+        <div class="note">
+            ⚠️ இந்த demo dashboard-ல் products
+            இந்த browser-ன் local storage-ல் மட்டும்
+            save ஆகும். அடுத்த கட்டத்தில் real
+            database + online image storage
+            அமைப்போம்.
+        </div>
+
+    </div>
+
+
+    <div class="box preview">
+
+        <h2>🛍️ Products Preview</h2>
+
+        <div
+            class="product-grid"
+            id="productGrid">
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+    let products =
+        JSON.parse(
+            localStorage.getItem("dkvProducts")
+        ) || [];
+
+
+    function addProduct() {
+
+        const imageInput =
+            document.getElementById("productImage");
+
+        const name =
+            document.getElementById("productName").value.trim();
+
+        const price =
+            document.getElementById("productPrice").value.trim();
+
+        const description =
+            document.getElementById("productDescription").value.trim();
+
+
+        if (!imageInput.files[0]) {
+            alert("Please select a product photo.");
+            return;
+        }
+
+        if (!name) {
+            alert("Please enter product name.");
+            return;
+        }
+
+        if (!price) {
+            alert("Please enter product price.");
+            return;
+        }
+
+
+        const reader = new FileReader();
+
+
+        reader.onload = function(event) {
+
+            const product = {
+
+                id: Date.now(),
+
+                image: event.target.result,
+
+                name: name,
+
+                price: price,
+
+                description: description
+
+            };
+
+
+            products.push(product);
+
+
+            localStorage.setItem(
+                "dkvProducts",
+                JSON.stringify(products)
+            );
+
+
+            document.getElementById("productImage").value = "";
+
+            document.getElementById("productName").value = "";
+
+            document.getElementById("productPrice").value = "";
+
+            document.getElementById("productDescription").value = "";
+
+
+            displayProducts();
+
+            alert("Product added successfully!");
+
+        };
+
+
+        reader.readAsDataURL(
+            imageInput.files[0]
+        );
+
+    }
+
+
+    function displayProducts() {
+
+        const grid =
+            document.getElementById("productGrid");
+
+        grid.innerHTML = "";
+
+
+        products.forEach(function(product) {
+
+            const card =
+                document.createElement("div");
+
+            card.className = "product";
+
+
+            card.innerHTML = `
+
+                <img
+                    src="${product.image}"
+                    alt="${product.name}"
+                >
+
+                <h3>
+                    ${product.name}
+                </h3>
+
+                <div class="price">
+                    ₹${product.price}
+                </div>
+
+                <p>
+                    ${product.description}
+                </p>
+
+                <button
+                    class="delete"
+                    onclick="deleteProduct(${product.id})">
+                    🗑️ Delete
+                </button>
+
+            `;
+
+
+            grid.appendChild(card);
+
+        });
+
+    }
+
+
+    function deleteProduct(id) {
+
+        if (
+            !confirm(
+                "Delete this product?"
+            )
+        ) {
+            return;
+        }
+
+
+        products =
+            products.filter(
+                function(product) {
+                    return product.id !== id;
+                }
+            );
+
+
+        localStorage.setItem(
+            "dkvProducts",
+            JSON.stringify(products)
+        );
+
+
+        displayProducts();
+
+    }
+
+
+    displayProducts();
+
+</script>
+
+</body>
+</html>

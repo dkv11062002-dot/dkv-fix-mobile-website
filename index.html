@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DKV Fix Mobiles & Laptop Service Center</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f7fb;
+            color: #172033;
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(135deg, #111827, #1d4ed8, #0f766e);
+            color: white;
+            text-align: center;
+            padding: 45px 20px;
+        }
+
+        .logo {
+            font-size: 43px;
+            font-weight: 900;
+            letter-spacing: 3px;
+            background: linear-gradient(
+                90deg,
+                #00e5ff,
+                #ffffff,
+                #00ff88,
+                #ffd700
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tagline {
+            margin-top: 10px;
+            font-size: 19px;
+            color: #dbeafe;
+            letter-spacing: 1px;
+        }
+
+        .badge {
+            display: inline-block;
+            margin-top: 18px;
+            padding: 9px 20px;
+            border: 1px solid #5eead4;
+            border-radius: 30px;
+            color: #99f6e4;
+            font-size: 14px;
+        }
+
+        /* NAVIGATION */
+        nav {
+            background: #020617;
+            text-align: center;
+            padding: 16px 10px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 12px;
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        nav a:hover {
+            color: #22d3ee;
+        }
+
+        /* HERO */
+        .hero {
+            text-align: center;
+            padding: 75px 20px;
+            background: linear-gradient(
+                180deg,
+                #ffffff,
+                #eef6ff
+            );
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            color: #172554;
+            margin-bottom: 16px;
+        }
+
+        .hero p {
+            font-size: 19px;
+            color: #475569;
+            max-width: 650px;
+            margin: auto;
+            line-height: 1.6;
+        }
+
+        .hero-button {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 14px 30px;
+            background: linear-gradient(
+                90deg,
+                #2563eb,
+                #06b6d4
+            );
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            box-shadow: 0 6px 18px rgba(37,99,235,0.3);
+        }
+
+        /* SERVICES */
+        .services {
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 33px;
+            color: #172554;
+            margin-bottom: 38px;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            width: 285px;
+            background: white;
+            padding: 32px 22px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+        }
+
+        .icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            color: #1d4ed8;
+            font-size: 22px;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        /* LOCATION */
+        .location {
+            text-align: center;
+            padding: 65px 20px;
+            background: white;
+        }
+
+        .location h2 {
+            font-size: 33px;
+            color: #172554;
+            margin-bottom: 12px;
+        }
+
+        .location p {
+            color: #64748b;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .map-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(
+                90deg,
+                #ef4444,
+                #f97316
+            );
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 17px;
+        }
+
+        /* CONTACT */
+        .contact {
+            text-align: center;
+            padding: 65px 20px;
+            background: #0f172a;
+            color: white;
+        }
+
+        .contact h2 {
+            font-size: 33px;
+            margin-bottom: 10px;
+        }
+
+        .contact p {
+            color: #cbd5e1;
+            margin-bottom: 28px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 14px 25px;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 16px;
+            transition: 0.2s;
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+        }
+
+        .whatsapp {
+            background: #25D366;
+        }
+
+        .call {
+            background: #2563eb;
+        }
+
+        .instagram {
+            background: linear-gradient(
+                45deg,
+                #f9ce34,
+                #ee2a7b,
+                #6228d7
+            );
+        }
+
+        /* ABOUT */
+        .about {
+            text-align: center;
+            padding: 60px 20px;
+            background: #eef6ff;
+        }
+
+        .about h2 {
+            font-size: 32px;
+            color: #172554;
+            margin-bottom: 18px;
+        }
+
+        .about p {
+            max-width: 750px;
+            margin: auto;
+            color: #475569;
+            line-height: 1.8;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #020617;
+            color: #94a3b8;
+            text-align: center;
+            padding: 22px;
+            font-size: 14px;
+        }
+
+        /* MOBILE */
+        @media (max-width: 600px) {
+
+            .logo {
+                font-size: 32px;
+                letter-spacing: 2px;
+            }
+
+            .tagline {
+                font-size: 16px;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            nav a {
+                margin: 0 6px;
+                font-size: 13px;
+            }
+
+            .section-title,
+            .location h2,
+            .contact h2,
+            .about h2 {
+                font-size: 28px;
+            }
+
+            .card {
+                width: 100%;
+                max-width: 330px;
+            }
+
+            .button {
+                width: 90%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+
+        <div class="logo">
+            DKV FIX MOBILES
+        </div>
+
+        <div class="tagline">
+            Mobile & Laptop Service Center
+        </div>
+
+        <div class="badge">
+            Professional Repair • Sales • Accessories
+        </div>
+
+    </header>
+
+
+    <!-- NAVIGATION -->
+    <nav>
+
+        <a href="#">Home</a>
+
+        <a href="#services">
+            Services
+        </a>
+
+        <a href="#location">
+            Location
+        </a>
+
+        <a href="#contact">
+            Contact
+        </a>
+
+    </nav>
+
+
+    <!-- HERO -->
+    <section class="hero">
+
+        <h1>
+            Welcome to DKV Fix
+        </h1>
+
+        <p>
+            Your trusted destination for Mobile,
+            Laptop Repair and Mobile Accessories.
+        </p>
+
+        <a
+            href="#services"
+            class="hero-button"
+        >
+            Explore Services
+        </a>
+
+    </section>
+
+
+    <!-- SERVICES -->
+    <section
+        class="services"
+        id="services"
+    >
+
+        <h2 class="section-title">
+            Our Services
+        </h2>
+
+        <div class="cards">
+
+            <div class="card">
+
+                <div class="icon">
+                    📱
+                </div>
+
+                <h3>
+                    <h3><a href="mobile-service.html">Mobile Service</a></h3>
+                </h3>
+
+                <p>
+                    Professional mobile repair,
+                    display, battery, charging,
+                    software and hardware services.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="icon">
+                    💻
+                </div>
+
+                <h3>
+                    <h3><a href="laptop-service.html">Laptop Service</a></h3>
+                </h3>
+
+                <p>
+                    Laptop hardware, software,
+                    Windows installation and
+                    troubleshooting services.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="icon">
+                    🎧
+                </div>
+
+                <h3>
+                    <h3><a href="accessories.html">Accessories</a></h3>
+                </h3>
+
+                <p>
+                    Mobile covers, chargers,
+                    earphones, cables and
+                    other accessories.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+    <section class="about">
+
+        <h2>
+            About DKV Fix
+        </h2>
+
+        <p>
+            DKV Fix Mobiles & Laptop Service Center
+            provides professional mobile and laptop
+            repair services along with quality mobile
+            accessories. Contact us for reliable service
+            and support.
+        </p>
+
+    </section>
+
+
+    <!-- LOCATION -->
+    <section
+        class="location"
+        id="location"
+    >
+
+        <h2>
+            📍 Visit Our Shop
+        </h2>
+
+        <p>
+            DKV Computer and Mobile Service Centre
+            <br>
+            Pudhupettai, Tamil Nadu 635651
+        </p>
+
+        <a
+            class="map-button"
+            href="https://maps.app.goo.gl/9GPHsQN1fEff39as7"
+            target="_blank"
+        >
+            📍 Open Google Maps
+        </a>
+
+    </section>
+
+
+    <!-- CONTACT -->
+    <section
+        class="contact"
+        id="contact"
+    >
+
+        <h2>
+            Need Help?
+        </h2>
+
+        <p>
+            Contact DKV Fix directly.
+        </p>
+
+        <div class="buttons">
+
+            <!-- WHATSAPP -->
+            <a
+                class="button whatsapp"
+                href="https://wa.me/917540032340?text=Welcome%20to%20DKV%20Fix%20Mobiles%20%26%20Laptop%20Service%20Center!%0A%0AHow%20can%20we%20help%20you%20today%3F%0A%0APlease%20tell%20us%20your%20mobile%20or%20laptop%20problem."
+                target="_blank"
+            >
+                🟢 WhatsApp Us
+            </a>
+
+
+            <!-- CALL -->
+            <a
+                class="button call"
+                href="tel:7540032340"
+            >
+                📞 Call Now
+            </a>
+
+
+            <!-- INSTAGRAM -->
+            <a
+                class="button instagram"
+                href="https://www.instagram.com/kiranraj2001__/?utm_source=qr&igsh=cjFsZDlmMnN6c3Ew"
+                target="_blank"
+            >
+                📸 Instagram
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        © 2026 DKV Fix Mobiles & Laptop Service Center.
+        All Rights Reserved.
+
+    </footer>
+
+
+</body>
+</html>

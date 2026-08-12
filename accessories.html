@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>DKV Fix - Mobile Accessories</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      color: #222;
+    }
+
+    header {
+      background: linear-gradient(135deg, #111827, #db2777, #7c3aed);
+      color: white;
+      text-align: center;
+      padding: 35px 15px;
+    }
+
+    header h1 {
+      font-size: 34px;
+      margin-bottom: 8px;
+    }
+
+    header p {
+      font-size: 16px;
+    }
+
+    nav {
+      background: #111827;
+      text-align: center;
+      padding: 14px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: bold;
+    }
+
+    .hero {
+      background: white;
+      text-align: center;
+      padding: 45px 20px;
+    }
+
+    .hero h2 {
+      color: #7c3aed;
+      font-size: 30px;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      color: #666;
+      line-height: 1.6;
+    }
+
+    .products {
+      max-width: 1100px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    .products h2 {
+      text-align: center;
+      color: #111827;
+      margin-bottom: 30px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 22px;
+    }
+
+    .product {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      text-align: center;
+      padding-bottom: 20px;
+    }
+
+    .product-image {
+      width: 100%;
+      height: 210px;
+      object-fit: contain;
+      background: #f8fafc;
+      padding: 15px;
+    }
+
+    .product h3 {
+      color: #2563eb;
+      margin: 15px 10px 8px;
+    }
+
+    .product p {
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-size: 22px;
+      font-weight: bold;
+      color: #16a34a;
+      margin-bottom: 15px;
+    }
+
+    .order-button {
+      display: inline-block;
+      background: #25D366;
+      color: white;
+      text-decoration: none;
+      padding: 11px 22px;
+      border-radius: 25px;
+      font-weight: bold;
+    }
+
+    .contact {
+      background: #111827;
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 20px;
+    }
+
+    .whatsapp {
+      display: inline-block;
+      margin-top: 18px;
+      background: #25D366;
+      color: white;
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 30px;
+      font-weight: bold;
+    }
+
+    footer {
+      background: #0b1120;
+      color: #aaa;
+      text-align: center;
+      padding: 18px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 28px;
+      }
+
+      nav a {
+        margin: 0 5px;
+        font-size: 13px;
+      }
+
+      .product-image {
+        height: 230px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>DKV FIX</h1>
+    <p>Mobile Accessories & Products</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="mobile-service.html">Mobile Service</a>
+    <a href="laptop-service.html">Laptop Service</a>
+    <a href="accessories.html">Accessories</a>
+  </nav>
+
+  <section class="hero">
+
+    <h2>🛍️ Mobile Accessories</h2>
+
+    <p>
+      Quality mobile accessories at affordable prices.
+      Choose your product and contact us on WhatsApp to order.
+    </p>
+
+  </section>
+
+  <section class="products">
+
+    <h2>Our Products</h2>
+
+    <div class="product-grid">
+
+      <!-- PRODUCT 1 -->
+      <div class="product">
+
+        <img
+          class="product-image"
+          src="https://via.placeholder.com/400x300?text=Product+Photo"
+          alt="Mobile Cover">
+
+        <h3>Premium Mobile Cover</h3>
+
+        <p>High quality protective mobile cover.</p>
+
+        <div class="price">₹299</div>
+
+        <a
+          class="order-button"
+          href="https://wa.me/917540032340?text=I%20want%20to%20order%20Premium%20Mobile%20Cover%20for%20Rs%20299"
+          target="_blank">
+          🟢 Order on WhatsApp
+        </a>
+
+      </div>
+
+
+      <!-- PRODUCT 2 -->
+      <div class="product">
+
+        <img
+          class="product-image"
+          src="https://via.placeholder.com/400x300?text=Product+Photo"
+          alt="Charger">
+
+        <h3>Fast Charger</h3>
+
+        <p>Fast charging adapter for smartphones.</p>
+
+        <div class="price">₹499</div>
+
+        <a
+          class="order-button"
+          href="https://wa.me/917540032340?text=
+          🟢 Order on WhatsApp
+        </a>
+
+      </div>
+
+
+      <!-- PRODUCT 3 -->
+      <div class="product">
+
+        <img
+          class="product-image"
+          src="https://via.placeholder.com/400x300?text=Product+Photo"
+          alt="Earphones">
+
+        <h3>Type-C Earphones</h3>
+
+        <p>Clear sound Type-C wired earphones.</p>
+
+        <div class="price">₹399</div>
+
+        <a
+          class="order-button"
+          href="https://wa.me/917540032340?text=Hello%20DKV%20Fix,%20I%20want%20to%20order%20the%20Type-C%20Earphones%20for%20Rs.399."
+          target="_blank">
+          🟢 Order on WhatsApp
+        </a>
+
+      </div>
+
+
+      <!-- PRODUCT 4 -->
+      <div class="product">
+
+        <img
+          class="product-image"
+          src="https://via.placeholder.com/400x300?text=Product+Photo"
+          alt="USB Cable">
+
+        <h3>Fast Charging Cable</h3>
+
+        <p>Durable charging and data cable.</p>
+
+        <div class="price">₹199</div>
+
+        <a
+          class="order-button"
+          href="https://wa.me/917540032340?text=Hello%20DKV%20Fix,%20I%20want%20to%20order%20the%20Fast%20Charging%20Cable%20for%20Rs.199."
+          target="_blank">
+          🟢 Order on WhatsApp
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="contact">
+
+    <h2>Need an Accessory?</h2>
+
+    <p>
+      Contact DKV Fix on WhatsApp for product availability.
+    </p>
+
+    <a
+      class="whatsapp"
+      href="https://wa.me/917540032340?text=Hello%20DKV%20Fix,%20I%20want%20to%20know%20about%20your%20mobile%20accessories."
+      target="_blank">
+      💬 WhatsApp DKV Fix
+    </a>
+
+  </section>
+
+  <footer>
+    © 2026 DKV Fix Mobiles & Laptop Service Center. All Rights Reserved.
+  </footer>
+
+</body><script>
+const products = JSON.parse(localStorage.getItem("dkvProducts")) || [];
+
+const productGrid = document.querySelector(".product-grid");
+
+if (productGrid && products.length > 0) {
+    products.forEach(product => {
+        const card = document.createElement("div");
+        card.className = "product";
+
+        card.innerHTML = `
+            <img
+                class="product-image"
+                src="${product.image}"
+                alt="${product.name}"
+            >
+
+            <h3>${product.name}</h3>
+
+            <p>${product.description}</p>
+
+            <div class="price">₹${product.price}</div>
+
+            <a
+                class="order-button"
+                href="https://wa.me/917540032340?text=Hi%20DKV%20Fix,%20I%20want%20to%20order%20${encodeURIComponent(product.name)}"
+                target="_blank"
+            >
+                Order on WhatsApp
+            </a>
+        `;
+
+        productGrid.appendChild(card);
+    });
+}
+</script>
+</html>
